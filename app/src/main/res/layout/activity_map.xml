@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/common_bg">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/activity_map_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_bg"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/activity_map_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@drawable/toolbar_bg">
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/activity_map_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_map_toolbar"
+                app:layout_constraintBottom_toTopOf="@+id/activity_map_color"
+                android:text="@string/品牌"
+                android:textSize="18sp"
+                android:textColor="@color/textColor_White"/>
+
+            <TextView
+                android:id="@+id/activity_map_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/activity_map_title"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_map_toolbar"
+                android:text="@string/款式"
+                android:textSize="14sp"
+                android:textColor="@color/textColor_White"/>
+
+            <ImageView
+                android:id="@+id/activity_map_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/activity_map_toolbar"
+                app:layout_constraintBottom_toBottomOf="@+id/activity_map_toolbar"
+                android:src="@drawable/back"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/activity_map_bg_one"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/textColor_White"
+            app:layout_constraintTop_toBottomOf="@+id/activity_map_header"/>
+
+        <TextView
+            android:id="@+id/activity_map_current_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_one"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_bg_one"
+            android:text="@string/当前定位"
+            android:textSize="16sp"
+            android:textColor="@color/textColor_Black"/>
+
+        <TextView
+            android:id="@+id/activity_map_text_current_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_one"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_bg_one"
+            app:layout_constraintStart_toEndOf="@id/activity_map_current_local"
+            android:text="@string/重庆市"
+            android:textSize="16sp"
+            android:textColor="@color/textColor_Blue"/>
+
+        <ImageView
+            android:id="@+id/activity_map_bg_two"
+            android:layout_width="match_parent"
+            android:layout_height="290dp"
+            android:background="@color/textColor_White"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_map_bg_one"/>
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/activity_map_map"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_two"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_bg_two">
+        </com.amap.api.maps.MapView>
+
+        <ImageView
+            android:id="@+id/activity_map_bg_three"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@color/textColor_White"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_map_bg_two"/>
+
+        <ImageView
+            android:id="@+id/activity_map_closest_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/local_image"
+            app:layout_constraintStart_toStartOf="@id/activity_map_current_local"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_three"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_bg_three"/>
+
+        <TextView
+            android:id="@+id/activity_map_closest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/activity_map_closest_image"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_three"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_bg_three"
+            android:text="@string/离我最近"
+            android:textSize="16sp"
+            android:textColor="@color/textColor_Black"/>
+
+        <TextView
+            android:id="@+id/activity_map_text_closest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/activity_map_closest"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_three"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_bg_three"
+            android:text="@string/重庆市"
+            android:textSize="16sp"
+            android:textColor="@color/textColor_Blue"/>
+
+        <ImageView
+            android:id="@+id/activity_map_bg_four"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="475dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/textColor_White"
+            app:layout_constraintTop_toBottomOf="@+id/activity_map_bg_three"/>
+
+        <ImageView
+            android:id="@+id/activity_map_all_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/local_image"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="@id/activity_map_current_local"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_bg_four" />
+
+        <TextView
+            android:id="@+id/activity_map_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/activity_map_closest_image"
+            app:layout_constraintTop_toTopOf="@+id/activity_map_all_image"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_map_all_image"
+            android:text="@string/所有地址"
+            android:textSize="16sp"
+            android:textColor="@color/textColor_Black"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

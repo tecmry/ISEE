@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="textColor_White">#FFFFFF</color>
+    <color name="textColor_Hint">#C0C0C0</color>
+    <color name="textColor_Gray">#A9A9A9</color>
+    <color name="textColor_Black">#000000</color>
+    <color name="textColor_Blue">#0867E9</color>
+    <color name="textColor_Red">#F93E3F</color>
+    <color name="textColor_Yellow">#FFD800</color>
+    <color name="itemColor">#FCFAF2</color>
+    <color name="buttonColor_Coffee">#64363B</color>
+    <color name="underlineColor_Coffee">#64363C</color>
+    <color name="textBgColor_Pink">#FDFBFB</color>
+    <color name="bottom_menu_btn_bg_common_color">#FFFFFF</color>
+    <color name="bottom_menu_btn_bg_press_color">#EEEEEE</color>
+    <color name="bottom_menu_btn_text_commom_color">#5B729A</color>
+    <color name="bottom_menu_btn_text_press_colot">#3F51B5</color>
+    <color name="bottom_menu_btn_text_stress_color">#FF0000</color>
+    <color name="bottom_menu_layout_color">#00000000</color>
+</resources>

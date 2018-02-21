@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/community_three_image_one"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:background="@color/textColor_Black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/community_three_image_two"/>
+    
+    <ImageView
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:src="@drawable/brand_underline"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/community_three_image_one"
+        app:layout_constraintEnd_toEndOf="@id/community_three_image_one"
+        app:layout_constraintBottom_toBottomOf="@+id/community_three_image_one"/>
+
+    <ImageView
+        android:id="@+id/community_three_image_two"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:background="@color/textColor_Black"
+        app:layout_constraintStart_toEndOf="@+id/community_three_image_one"
+        app:layout_constraintEnd_toStartOf="@id/community_three_image_three"/>
+
+    <ImageView
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:src="@drawable/brand_underline"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/community_three_image_two"
+        app:layout_constraintEnd_toEndOf="@id/community_three_image_two"
+        app:layout_constraintBottom_toBottomOf="@+id/community_three_image_two"/>
+
+    <ImageView
+        android:id="@+id/community_three_image_three"
+        android:layout_width="95dp"
+        android:layout_height="95dp"
+        android:background="@color/textColor_Black"
+        app:layout_constraintStart_toEndOf="@+id/community_three_image_two"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:layout_width="95dp"
+        android:layout_height="40dp"
+        android:src="@drawable/brand_underline"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="@id/community_three_image_three"
+        app:layout_constraintEnd_toEndOf="@id/community_three_image_three"
+        app:layout_constraintBottom_toBottomOf="@+id/community_three_image_three"/>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnablePureScrollMode="true"
+        app:srlEnableLoadmore="false"
+        app:srlDragRate="1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/register_bg">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/activity_register_edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/请输入用户名"
+            android:layout_above="@+id/activity_register_edit_pass"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:textCursorDrawable="@null"
+            android:layout_centerHorizontal="true"
+            app:met_textColorHint="@color/textColor_White"
+            app:met_baseColor="@color/textColor_White"
+            app:met_primaryColor="@color/textColor_White" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/activity_register_edit_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/activity_login_edit_confirm"
+            android:hint="@string/请输入密码"
+            android:inputType="textPassword"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:textCursorDrawable="@null"
+            android:layout_centerHorizontal="true"
+            app:met_textColorHint="@color/textColor_White"
+            app:met_baseColor="@color/textColor_White"
+            app:met_primaryColor="@color/textColor_White" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/activity_login_edit_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/请再次输入密码"
+            android:inputType="textPassword"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:textCursorDrawable="@null"
+            android:layout_centerInParent="true"
+            app:met_textColorHint="@color/textColor_White"
+            app:met_baseColor="@color/textColor_White"
+            app:met_primaryColor="@color/textColor_White" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/activity_register_edit_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/请输入邮箱"
+            android:inputType="textEmailAddress"
+            android:layout_below="@+id/activity_login_edit_confirm"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_centerHorizontal="true"
+            android:textCursorDrawable="@null"
+            app:met_textColorHint="@color/textColor_White"
+            app:met_baseColor="@color/textColor_White"
+            app:met_primaryColor="@color/textColor_White" />
+
+        <Button
+            android:id="@+id/activity_register_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/activity_register_edit_email"
+            android:text="@string/注册"
+            android:textColor="@color/textColor_White"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:background="@drawable/login_btn_bg"
+            android:layout_marginTop="12dp" />
+
+    </RelativeLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</layout>

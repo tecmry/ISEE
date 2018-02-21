@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/common_bg"
+        tools:context="com.example.mao.beautylife.activity.SearchResultActivity">
+
+        <FrameLayout
+            android:id="@+id/activity_search_result_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_bg"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/activity_search_result_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:clipChildren="false"
+                android:background="@drawable/toolbar_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/搜索结果"
+                    android:textSize="18sp"
+                    android:textColor="@color/textColor_White" />
+
+                <ImageView
+                    android:id="@+id/activity_search_result_back"
+                    android:layout_width="15dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/back"/>
+
+            </android.support.v7.widget.Toolbar>
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/activity_search_result_search"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:drawableStart="@drawable/search_left"
+            android:background="@drawable/search_edit_bg"
+            android:drawablePadding="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginEnd="35dp"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            android:gravity="center_vertical"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/textColor_Black"
+            android:textColorHint="@color/textColor_Gray"
+            android:textSize="15sp"
+            app:layout_constraintTop_toBottomOf="@id/activity_search_result_frame"
+            />
+
+        <TextView
+            android:id="@+id/activity_search_result_hot_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/搜索结果"
+            android:textSize="15sp"
+            android:textColor="@color/textColor_Gray"
+            app:layout_constraintStart_toStartOf="@id/activity_search_result_search"
+            app:layout_constraintTop_toBottomOf="@id/activity_search_result_search"
+            android:layout_marginTop="15dp"/>
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/activity_search_result_refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="165dp"
+            app:srlEnableRefresh="false"
+            app:layout_constraintTop_toBottomOf="@+id/activity_search_result_hot_search">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/activity_search_result_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:overScrollMode="never">
+        </android.support.v7.widget.RecyclerView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:srlClassicsSpinnerStyle="Translate"
+                app:srlDrawableProgress="@drawable/ic_progress_hojder">
+            </com.scwang.smartrefresh.layout.footer.ClassicsFooter>
+
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#FCFAF2"
+    android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/yotheruser_img"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="杏杏的小可爱"
+        android:textColor="@color/textColor_Black"
+        android:layout_toRightOf="@id/yotheruser_img"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/yotherusername"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="学生党"
+        android:layout_below="@id/yotherusername"
+        android:layout_toRightOf="@id/yotheruser_img"
+        android:layout_marginLeft="10dp"
+        android:textSize="13sp"
+        android:id="@+id/yothers_tags_one"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="个人标签"
+        android:id="@+id/yothers_tag_two"
+        android:layout_below="@id/yotherusername"
+        android:layout_toRightOf="@id/yothers_tags_one"
+        android:layout_marginLeft="10dp"
+        android:textSize="13sp"
+        />
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/yzhuanfa"
+        android:layout_marginRight="100dp"
+        android:id="@+id/yzhuanfa_img"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/yforwardnumber"
+        android:layout_width="23dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/yzhuanfa_img"
+        android:layout_marginRight="100dp"
+        android:text="123"
+        android:textSize="12sp" />
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:src="@drawable/self_like"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/yother_likeimg"
+        />
+
+    <TextView
+        android:id="@+id/ygetnumber"
+        android:layout_width="23dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/yother_likeimg"
+        android:layout_below="@+id/yother_likeimg"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="12sp" />
+    <ImageView
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/yothers_like"
+        android:src="@drawable/yohers_like"
+    />
+
+    <TextView
+        android:id="@+id/ylikenumber"
+        android:layout_width="23dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/yothers_like"
+        android:layout_marginRight="20dp"
+        android:text="555"
+        android:textSize="12sp" />
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="90dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/yother_talkimg"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/yother_talkimg"
+            android:text="烂番茄色ysl46"
+            android:textSize="15sp"
+            android:textColor="@color/textColor_Black"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/yother_talktitle"
+            />
+
+        <TextView
+            android:id="@+id/ytalk_little"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yother_talktitle"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/yother_talkimg"
+            android:maxLines="2"
+            android:text="来看看星系给我们带来什么好东西"
+            android:textSize="13sp" />
+    </RelativeLayout>
+</LinearLayout>

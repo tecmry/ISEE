@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    >
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="181dp"
+        android:layout_height="wrap_content"
+        android:background="#FCFAF2">
+
+        <ImageView
+            android:id="@+id/item_img"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:id="@+id/tags_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/tags_two"
+            android:layout_alignBottom="@+id/tags_two"
+            android:layout_alignStart="@+id/yitem_name"
+            android:background="@color/textColor_Black"
+            android:paddingBottom="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="2dp"
+            android:text="MAC"
+            android:textColor="@color/textColor_White"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/tags_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/item_img"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@+id/tags_one"
+            android:background="#E92A3A"
+            android:paddingBottom="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="2dp"
+            android:text="MAC"
+            android:textColor="@color/textColor_White"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/yitem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tags_one"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="MAC lady bug"
+            android:textColor="@color/textColor_Black" />
+
+        <TextView
+            android:id="@+id/yitem_write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yitem_name"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:maxLines="2"
+            android:text="这里是描述这里是描述" />
+
+        <ImageView
+            android:id="@+id/yimg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/yitem_write"
+            android:layout_below="@id/yitem_write"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/yitem_time" />
+
+        <TextView
+            android:id="@+id/ytv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yitem_write"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/yimg_time"
+            android:text="5" />
+
+        <ImageView
+            android:id="@+id/yimg_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yitem_write"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/ytv_time"
+            android:src="@drawable/yitem_friends" />
+
+        <TextView
+            android:id="@+id/ylviewpeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/yitem_write"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/yimg_friend"
+            android:text="66" />
+    </RelativeLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="183dp"
+        android:layout_height="match_parent"
+        android:background="#FCFAF2">
+
+        <ImageView
+            android:id="@+id/yritem_img"
+            android:layout_width="175dp"
+            android:layout_height="175dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" />
+
+        <TextView
+            android:id="@+id/yrtags_one"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/yritem_img"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/textColor_Black"
+            android:paddingBottom="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="2dp"
+            android:text="MAC"
+            android:textColor="@color/textColor_White"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/yrtags_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/yrtags_one"
+            android:layout_alignBottom="@+id/yrtags_one"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/yrtags_one"
+            android:background="#E92A3A"
+            android:paddingBottom="2dp"
+            android:paddingLeft="2dp"
+            android:paddingRight="2dp"
+            android:paddingTop="2dp"
+            android:text="MAC"
+            android:textColor="@color/textColor_White"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/yritem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/yrtags_one"
+            android:layout_below="@+id/yrtags_one"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="MAC lady bug"
+            android:textColor="@color/textColor_Black" />
+
+        <TextView
+            android:id="@+id/yritem_write"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/yritem_name"
+            android:layout_below="@+id/yritem_name"
+            android:layout_marginTop="10dp"
+            android:maxLines="2"
+            android:text="这里是描述这里是描述" />
+
+        <ImageView
+            android:id="@+id/yrimg_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/yritem_write"
+            android:src="@drawable/yitem_time" />
+
+        <TextView
+            android:id="@+id/yrtv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/yrtags_one"
+            android:text="5" />
+
+        <ImageView
+            android:id="@+id/yrimg_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/yrtags_two"
+            android:layout_alignTop="@+id/yrtv_time"
+            android:src="@drawable/yitem_friends" />
+
+        <TextView
+            android:id="@+id/yrviewpeople"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/yritem_name"
+            android:layout_alignParentBottom="true"
+            android:text="66" />
+    </RelativeLayout>
+</LinearLayout>

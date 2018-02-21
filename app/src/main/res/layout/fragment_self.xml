@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<android.support.v4.widget.NestedScrollView
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="#FCFAF2"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="#FCFAF2"
+
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:layout_marginStart="20dp"
+            android:id="@+id/userimg"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/userimg"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="25dp"
+            android:text="无与伦比的可爱杏"
+            android:textSize="17sp"
+            android:id="@+id/self_username"
+            android:textColor="@color/textColor_Black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/self_username"
+            android:layout_toRightOf="@+id/userimg"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/textColor_Black"
+            android:id="@+id/self_motto" />
+
+        <TextView
+            android:id="@+id/self_mathcao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/self_motto"
+            android:layout_alignTop="@+id/self_imgflower"
+            android:hint="0"
+            android:textColor="@color/textColor_Red"
+            android:textColorHint="@color/textColor_Red"
+            android:textSize="21sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/self_mathcao"
+            android:text="种草"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/self_motto"
+            android:layout_alignBaseline="@+id/self_mathcao"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/self_textcao"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/self_flower"
+            android:layout_below="@+id/self_motto"
+            android:layout_toRightOf="@+id/self_textcao"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/self_imgflower"
+            />
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="#A38787"
+            android:layout_toRightOf="@+id/self_imgflower"
+            android:layout_below="@+id/self_motto"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/self_fline"
+            android:orientation="horizontal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/self_fline"
+            android:layout_below="@+id/self_motto"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/textColor_Yellow"
+            android:hint="0"
+            android:textColorHint="@color/textColor_Yellow"
+            android:textSize="21sp"
+            android:id="@+id/self_mathbacao"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/self_mathbacao"
+            android:text="拔草"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/self_motto"
+            android:layout_alignBaseline="@+id/self_mathbacao"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/self_textbacao"
+            />
+        <ImageView
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:src="@drawable/self_delete"
+            android:layout_below="@+id/self_motto"
+            android:layout_toRightOf="@+id/self_textbacao"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="5dp"
+            android:id="@+id/self_imgdelete"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFE6E8">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/self_like"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/self_imglike"
+        android:layout_marginLeft="50dp"
+        />
+
+        <TextView
+            android:id="@+id/self_likemath"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/self_imglike"
+            android:layout_below="@+id/self_imglike"
+            android:gravity="center"
+            android:text="0" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收藏"
+            android:textColor="@color/textColor_Red"
+            android:textSize="17sp"
+            android:layout_below="@id/self_likemath"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            />
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="80dp"
+            android:background="#FC4246"
+            android:layout_toRightOf="@id/self_imglike"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/self_star"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/self_imgstar"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/self_imgstar"
+            android:text="0"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/self_starmath"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关注"
+            android:textColor="#FC5252"
+            android:layout_centerHorizontal="true"
+            android:textSize="17sp"
+            android:layout_below="@id/self_starmath"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            />
+        <LinearLayout
+            android:layout_width="1dp"
+            android:layout_height="80dp"
+            android:background="#FC4648"
+            android:layout_toRightOf="@id/self_imgstar"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/self_yingtao"
+            android:src="@drawable/self_yingtao"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/self_yingtao"
+            android:text="0"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:gravity="center"
+            android:layout_marginLeft="50dp"
+            android:id="@+id/self_yingtaomath"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="粉丝"
+            android:textColor="#F4A088"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            android:textSize="17sp"
+            android:layout_below="@id/self_yingtaomath"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/toolbar_bg"
+        android:layout_marginTop="15dp"
+        >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/self_attitude"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="120dp"
+        android:id="@+id/self_imgattitude"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="动态"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="85dp"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/self_leg"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="50dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:text="足迹"
+            android:layout_centerVertical="true"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            />
+    </RelativeLayout>
+
+</LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
+
+</layout>

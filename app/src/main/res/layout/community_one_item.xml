@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="180dp"
+    android:background="@color/itemColor">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/one_item_head_image"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:src="@color/textColor_Black"/>
+
+    <TextView
+        android:id="@+id/one_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toTopOf="@id/one_item_head_image"
+        app:layout_constraintStart_toEndOf="@id/one_item_head_image"
+        android:text="@string/姓名"
+        android:textSize="18sp"
+        android:textColor="@color/textColor_Black"/>
+
+    <TextView
+        android:id="@+id/one_item_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@id/one_item_name"
+        app:layout_constraintStart_toEndOf="@id/one_item_head_image"
+        android:text="@string/个人标签"
+        android:textColor="@color/textColor_Gray"/>
+
+    <ImageView
+        android:id="@+id/one_item_image_share"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
+        android:src="@drawable/share"
+        android:layout_marginStart="65dp"
+        app:layout_constraintBottom_toTopOf="@id/one_item_info"
+        app:layout_constraintStart_toEndOf="@id/one_item_name"
+        app:layout_constraintEnd_toStartOf="@id/one_item_image_collect"/>
+
+    <TextView
+        android:id="@+id/one_item_text_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/one_item_image_share"
+        app:layout_constraintEnd_toEndOf="@id/one_item_image_share"
+        app:layout_constraintTop_toBottomOf="@id/one_item_image_share"
+        android:text="@string/num"/>
+
+    <ImageView
+        android:id="@+id/one_item_image_collect"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
+        android:src="@drawable/collect"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@id/one_item_info"
+        app:layout_constraintStart_toEndOf="@id/one_item_image_share"
+        app:layout_constraintEnd_toStartOf="@id/one_item_image_like"/>
+
+    <TextView
+        android:id="@+id/one_item_text_collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/one_item_image_collect"
+        app:layout_constraintEnd_toEndOf="@id/one_item_image_collect"
+        app:layout_constraintTop_toBottomOf="@id/one_item_image_collect"
+        android:text="@string/num"/>
+
+    <ImageView
+        android:id="@+id/one_item_image_like"
+        android:layout_width="32dp"
+        android:layout_height="28dp"
+        android:src="@drawable/like"
+        android:layout_marginStart="15dp"
+        app:layout_constraintBottom_toTopOf="@id/one_item_info"
+        app:layout_constraintStart_toEndOf="@id/one_item_image_collect"
+        app:layout_constraintEnd_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/one_item_text_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/one_item_image_like"
+        app:layout_constraintEnd_toEndOf="@id/one_item_image_like"
+        app:layout_constraintTop_toBottomOf="@id/one_item_image_like"
+        android:text="@string/num"/>
+
+    <TextView
+        android:id="@+id/one_item_text_color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintStart_toStartOf="@id/one_item_head_image"
+        app:layout_constraintTop_toBottomOf="@id/one_item_head_image"
+        android:text="@string/色号"
+        android:textColor="@color/textColor_Black"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/one_item_text_color_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/one_item_text_color"
+        app:layout_constraintStart_toEndOf="@id/one_item_text_color"
+        android:text="@string/色号样例"
+        android:textColor="@color/textColor_Gray"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:id="@+id/one_item_text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@id/one_item_text_color"
+        app:layout_constraintTop_toBottomOf="@id/one_item_text_color"
+        android:text="@string/内容"
+        android:textColor="@color/textColor_Black"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/one_item_text_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        app:layout_constraintStart_toStartOf="@id/one_item_text_color"
+        app:layout_constraintTop_toBottomOf="@id/one_item_text_content"
+        android:text="@string/查看全部"
+        android:textColor="@color/textColor_Blue"
+        android:textSize="14sp"/>
+
+    <com.jaeger.ninegridimageview.NineGridImageView
+        android:id="@+id/one_item_nine_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_max="200dp"
+        app:imgGap="5dp"
+        app:maxSize="9"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/one_item_text_all">
+    </com.jaeger.ninegridimageview.NineGridImageView>
+
+</android.support.constraint.ConstraintLayout>
