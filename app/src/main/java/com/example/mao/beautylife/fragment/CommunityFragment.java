@@ -1,5 +1,6 @@
 package com.example.mao.beautylife.fragment;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,28 +12,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 
 import com.avos.avoscloud.IntentUtil;
 import com.example.mao.beautylife.GlideApp;
 import com.example.mao.beautylife.R;
+import com.example.mao.beautylife.data.ColorData;
+import com.example.mao.beautylife.data.InfoData;
+import com.example.mao.beautylife.data.VideoData;
 import com.example.mao.beautylife.databinding.FragmentCommunityBinding;
+import com.example.mao.beautylife.util.HttpUtil;
 import com.example.mao.beautylife.util.ImageLoaderUtil;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.cache.CacheMode;
+import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.Response;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by -- Mao on 2017/11/27.
  */
 
-public class CommunityFragment extends Fragment implements View.OnClickListener {
+public class CommunityFragment extends Fragment {
 
+    private static final String TAG = "CommunityFragment";
     private FragmentCommunityBinding binding;
-    private FragmentManager manager;
-    private CommunityOneFragment oneFragment = new CommunityOneFragment();
-    private CommunityTwoFragment twoFragment = new CommunityTwoFragment();
-    private CommunityThreeFragment threeFragment = new CommunityThreeFragment();
-    private CommunityFourFragment fourFragment = new CommunityFourFragment();
-    private CommunityFiveFragment fiveFragment = new CommunityFiveFragment();
+    private List<ColorData> colorDataList = new ArrayList<>();
+    private List<VideoData> videoDataList = new ArrayList<>();
+    private List<InfoData> infoDataList = new ArrayList<>();
     private final int[] COMMUNITY_BANNER = {R.drawable.commnuity_banner_one,
             R.drawable.commnuity_banner_two,
             R.drawable.community_banner_three,
@@ -42,15 +57,28 @@ public class CommunityFragment extends Fragment implements View.OnClickListener 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_community, container, false);
-        initCircleImage();
         GlideApp.with(this).load(R.drawable.one_selected).into(binding.fragmentCommunityOne);
-        binding.fragmentCommunityOne.setOnClickListener(this);
-        binding.fragmentCommunityTwo.setOnClickListener(this);
-        binding.fragmentCommunityThree.setOnClickListener(this);
-        binding.fragmentCommunityFour.setOnClickListener(this);
-        binding.fragmentCommunityFive.setOnClickListener(this);
-        manager = getActivity().getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.fragment_community_frame, oneFragment).commit();
+        final Intent intent;
+
+        binding.fragmentCommunityOne.setOnClickListener(v -> {
+
+        });
+        binding.fragmentCommunityTwo.setOnClickListener(v -> {
+
+        });
+        binding.fragmentCommunityThree.setOnClickListener(v -> {
+
+        });
+        request(new StringCallback() {
+            @Override
+            public void onSuccess(Response<String> response) {
+                if (response.isSuccessful()){
+                    parseJSON(response.body());
+                }else {
+                    Toast.makeText(getActivity(), "服务器连接失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         binding.fragmentCommunityPager.setAdapter(new PagerAdapter() {
             @Override
             public int getCount() {
@@ -81,48 +109,38 @@ public class CommunityFragment extends Fragment implements View.OnClickListener 
                 return 0.8f;
             }
         });
+
         return binding.getRoot();
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.fragment_community_one:
-                manager.beginTransaction().replace(R.id.fragment_community_frame, oneFragment).commit();
-                initCircleImage();
-                binding.fragmentCommunityPager.setNarrowFactor(0.9f);
-                GlideApp.with(this).load(R.drawable.one_selected).into(binding.fragmentCommunityOne);
-                break;
-            case R.id.fragment_community_two:
-                manager.beginTransaction().replace(R.id.fragment_community_frame, twoFragment).commit();
-                initCircleImage();
-                GlideApp.with(this).load(R.drawable.two_selected).into(binding.fragmentCommunityTwo);
-                break;
-            case R.id.fragment_community_three:
-                manager.beginTransaction().replace(R.id.fragment_community_frame, threeFragment).commit();
-                initCircleImage();
-                GlideApp.with(this).load(R.drawable.three_selected).into(binding.fragmentCommunityThree);
-                break;
-            case R.id.fragment_community_four:
-                manager.beginTransaction().replace(R.id.fragment_community_frame, fourFragment).commit();
-                initCircleImage();
-                GlideApp.with(this).load(R.drawable.four_selected).into(binding.fragmentCommunityFour);
-                break;
-            case R.id.fragment_community_five:
-                manager.beginTransaction().replace(R.id.fragment_community_frame, fiveFragment).commit();
-                initCircleImage();
-                GlideApp.with(this).load(R.drawable.five_selected).into(binding.fragmentCommunityFive);
-                break;
-            default:
-                break;
+    private void parseJSON(String jsonData){
+        try {
+            JSONObject object = new JSONObject(jsonData);
+            JSONObject jsonObject = null;
+            JSONArray video = object.getJSONArray("videos");
+            JSONArray color = object.getJSONArray("tColors");
+            for (int i = 0; i < video.length(); i++) {
+                jsonObject = video.getJSONObject(i);
+                videoDataList.add(new VideoData(jsonObject.getString("nickname"),
+                                                    jsonObject.getString("title"),
+                                                    jsonObject.getString("coverUrl"),
+                                                    jsonObject.getInt("likeTimes"),
+                                                    jsonObject.getString("videourl")));
+
+            }
+
+        }catch (JSONException e){
+            e.printStackTrace();
         }
     }
 
-    private void initCircleImage(){
-        GlideApp.with(this).load(R.drawable.one_unselected).into(binding.fragmentCommunityOne);
-        GlideApp.with(this).load(R.drawable.two_unselected).into(binding.fragmentCommunityTwo);
-        GlideApp.with(this).load(R.drawable.three_unselected).into(binding.fragmentCommunityThree);
-        GlideApp.with(this).load(R.drawable.four_unselected).into(binding.fragmentCommunityFour);
-        GlideApp.with(this).load(R.drawable.five_unselected).into(binding.fragmentCommunityFive);
+    private void request(StringCallback callback){
+        OkGo.<String>get(HttpUtil.URL + "/home")
+                .tag(this)
+                .cacheKey(TAG)
+                .cacheMode(CacheMode.DEFAULT)
+                .retryCount(5)
+                .execute(callback);
     }
+
 }

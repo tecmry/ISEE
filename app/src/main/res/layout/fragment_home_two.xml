@@ -4,10 +4,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/common_bg"
+        app:srlPrimaryColor="#333"
+        app:srlAccentColor="#fff"
+        app:srlEnableLoadmore="false"
+        app:srlEnableHeaderTranslationContent="true">
+
+    <com.scwang.smartrefresh.header.StoreHouseHeader
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:shhText="I SEE"
+        app:shhLineWidth="2dp"/>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_two_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
     </android.support.constraint.ConstraintLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
 </layout>

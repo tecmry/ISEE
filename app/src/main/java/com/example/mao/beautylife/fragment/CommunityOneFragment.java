@@ -73,7 +73,7 @@ public class CommunityOneFragment extends Fragment {
     }
 
     private void request(StringCallback callback){
-        OkGo.<String>get(HttpUtil.URL + "/home/brand")
+        OkGo.<String>get(HttpUtil.URL + "/home/tColor")
                 .tag(this)
                 .cacheKey(TAG)
                 .cacheMode(CacheMode.DEFAULT)

@@ -49,21 +49,25 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.SearchActivity" />
         <activity android:name=".activity.ProductActivity" />
-        <activity android:name=".activity.SearchResultActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
+        <activity
+            android:name=".activity.SearchResultActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activity.VideoActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".activity.MapActivity"></activity>
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.MapActivity" />
 
         <service
             android:name=".service.MapService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
 
-        <activity android:name=".activity.SettingActivity"
-            android:windowSoftInputMode="adjustPan"></activity>
-        <activity android:name=".activity.FullImageActivity"/>
+        <activity
+            android:name=".activity.SettingActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".activity.FullImageActivity" />
+        <activity android:name=".activity.CommunityVideoActivity" />
+        <activity android:name=".activity.TryActivity"></activity>
     </application>
 
 </manifest>

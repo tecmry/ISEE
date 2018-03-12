@@ -6,6 +6,6 @@ package com.example.mao.beautylife.util;
 
 public class HttpUtil {
 
-    public static final String URL = "http://104.236.187.61:8080/noNameApp";
+    public static final String URL = "http://192.241.228.213:8080/noNameApp";
 
 }

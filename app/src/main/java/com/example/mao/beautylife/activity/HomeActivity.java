@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements TabLayoutListener
         list.add(new HomeFragment());
         list.add(new CommunityFragment());
         list.add(new SelfFragment());
+        binding.activityHomeViewPager.setOffscreenPageLimit(2);
         binding.activityHomeViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), list));
         binding.activityHomeViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.activityHomeTab));
         binding.activityHomeTab.addOnTabSelectedListener(new TabSelected(binding.activityHomeViewPager, this));

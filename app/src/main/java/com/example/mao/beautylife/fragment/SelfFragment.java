@@ -63,9 +63,9 @@ public class SelfFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)  {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_self, container, false);
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
-        binding.selfUsername.setText(AVUser.getCurrentUser().getUsername());
-        ImageLoaderUtil.ImageLoader(this, binding.userimg, pref.getString("imageUrl", "http://ac-ecIHPESH.clouddn.com/b5364792bd7d4a31161f.png"));
-        binding.userimg.setOnClickListener(view -> {
+        binding.selfUserName.setText(AVUser.getCurrentUser().getUsername());
+        ImageLoaderUtil.ImageLoader(this, binding.selfUserImage, pref.getString("imageUrl", "http://ac-ecIHPESH.clouddn.com/b5364792bd7d4a31161f.png"));
+        binding.selfUserImage.setOnClickListener(view -> {
             BottomMenuFragment bottomMenuFragment = new BottomMenuFragment();
             List<MenuItem> menuItemList = new ArrayList<MenuItem>();
             MenuItem menuItem1 = new MenuItem();
@@ -162,7 +162,7 @@ public class SelfFragment extends Fragment {
 
     private void displayImage(String imagePath){
         if (imagePath != null){
-            ImageLoaderUtil.ImageLoader(this, binding.userimg, imagePath);
+            ImageLoaderUtil.ImageLoader(this, binding.selfUserImage, imagePath);
             editor = pref.edit();
             editor.putString("imageUrl", imagePath);
             editor.apply();

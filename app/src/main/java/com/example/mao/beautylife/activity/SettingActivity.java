@@ -35,9 +35,12 @@ public class SettingActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         });
-        binding.activitySettingEditNameBtn.setOnClickListener(view -> {
+        binding.activitySettingEditNameBtn.setOnClickListener(v -> {
             editMaterialEditText(binding.activitySettingEditName);
             ImageLoaderUtil.ImageLoader(this, binding.activitySettingEditNameBtn, R.drawable.write_selected);
+        });
+        binding.activitySettingEditSexBtn.setOnClickListener(v -> {
+
         });
         binding.activitySettingBack.setOnClickListener(view -> {
             onBackPressed();
@@ -80,4 +83,5 @@ public class SettingActivity extends AppCompatActivity {
         editor.putString("qq", binding.activitySettingEditQq.getText().toString());
         editor.apply();
     }
+
 }

@@ -15,8 +15,10 @@
     <string name="exit">退出当前账号</string>
     <string name="请再次输入密码">请再次输入密码</string>
     <string name="最in试色">最in试色</string>
-    <string name="视频">视频</string>
-    <string name="资讯">资讯</string>
+    <string name="长草视频">长草视频</string>
+    <string name="视频">大家都在看</string>
+    <string name="试色">大家都在试</string>
+    <string name="资讯">大家都在聊</string>
     <string name="更多">更多</string>
     <string name="Type">Type something</string>
     <string name="搜索">搜索</string>
@@ -33,10 +35,10 @@
     <string name="email">邮箱</string>
     <string name="qq">QQ</string>
     <string name="编辑个人信息">编辑个人信息</string>
-    <string name="试色草原">试色草原</string>
-    <string name="种草视频">种草视频</string>
+    <string name="爱试广场">爱试广场</string>
+    <string name="种草视频">长草视频</string>
     <string name="热门资讯">热门资讯</string>
-    <string name="品牌汇总">品牌汇总</string>
+    <string name="资讯杂谈">资讯杂谈</string>
     <string name="积分问答">积分问答</string>
     <string name="综合排序">综合排序</string>
     <string name="最新发布">最新发布</string>
@@ -44,6 +46,8 @@
     <string name="最多点赞">最多点赞</string>
     <string name="最多收藏">最多收藏</string>
     <string name="姓名">姓名</string>
+    <string name="最新">最新</string>
+    <string name="最热">最热</string>
     <string name="个人标签">个人标签</string>
     <string name="色号">色号：</string>
     <string name="色号样例">lady bug</string>
@@ -81,7 +85,10 @@
     <string name="点赞">点赞:</string>
     <string name="关注">关注</string>
     <string name="关注plus">+关注</string>
+    <string name="更多热门新闻">更多热门新闻</string>
     <string name="分类">分类</string>
+    <string name="more">更多</string>
+    <string name="发售">发售时间:</string>
     <string name="day">2018.03.2</string>
     <string name="time">13:30</string>
     <dimen name="space">8dp</dimen>
