@@ -8,29 +8,18 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.mao.beautylife.GlideApp;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.activity.SearchActivity;
-import com.example.mao.beautylife.adapter.SearchRecyclerAdapter;
-import com.example.mao.beautylife.adapter.SmartViewHolder;
-import com.example.mao.beautylife.data.ListData;
-import com.example.mao.beautylife.databinding.FragmentHomeBinding;
 import com.example.mao.beautylife.databinding.FragmentHomeOneBinding;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
 import com.youth.banner.loader.ImageLoaderInterface;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 

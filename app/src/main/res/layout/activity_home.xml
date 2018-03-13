@@ -8,64 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/activity_home_frame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:background="@drawable/toolbar_bg"
-            android:fitsSystemWindows="true">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/activity_home_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@drawable/toolbar_bg">
-            </android.support.v7.widget.Toolbar>
-
-            <ImageView
-                android:id="@+id/activity_home_toolbar_left_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginStart="8dp"
-                android:layout_gravity="start|center_vertical"
-                android:src="@drawable/setting_white"/>
-
-            <TextView
-                android:id="@+id/activity_home_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="@string/主页"
-                android:textSize="20sp"
-                android:textColor="@color/textColor_White"/>
-
-            <ImageView
-                android:id="@+id/activity_home_toolbar_right_image"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginEnd="8dp"
-                android:layout_gravity="end|center_vertical"
-                android:src="@drawable/self_message"/>
-
-        </FrameLayout>
-
             <com.example.mao.beautylife.view.NoScrollViewPager
                 android:id="@+id/activity_home_view_pager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_above="@+id/activity_home_tab"
-                android:layout_below="@+id/activity_home_frame">
+                android:layout_above="@+id/activity_home_tab">
             </com.example.mao.beautylife.view.NoScrollViewPager>
 
         <android.support.design.widget.TabLayout
             android:id="@+id/activity_home_tab"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="45dp"
             android:layout_alignParentBottom="true"
-            android:background="@drawable/toolbar_bg"
+            android:background="@color/textColor_White"
             app:tabIndicatorHeight="0dp"
             android:clipChildren="false">
 

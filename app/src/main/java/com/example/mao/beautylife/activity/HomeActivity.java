@@ -2,6 +2,7 @@ package com.example.mao.beautylife.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.example.mao.beautylife.fragment.CommunityFragment;
 import com.example.mao.beautylife.fragment.HomeFragment;
 import com.example.mao.beautylife.fragment.SelfFragment;
 import com.example.mao.beautylife.listener.TabLayoutListener;
+import com.example.mao.beautylife.util.ModeUtil;
 import com.scwang.smartrefresh.layout.api.RefreshHeader;
 
 import java.util.ArrayList;
@@ -30,6 +32,11 @@ public class HomeActivity extends AppCompatActivity implements TabLayoutListener
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getWindow().getDecorView().setSystemUiVisibility( View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+        ModeUtil.MIUISetStatusBarLightMode(getWindow(), true);
+        ModeUtil.FlymeSetStatusBarLightMode(getWindow(), true);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         binding.activityHomeViewPager.setNoScroll(true);
         List<Fragment> list = new ArrayList<>();
@@ -40,9 +47,6 @@ public class HomeActivity extends AppCompatActivity implements TabLayoutListener
         binding.activityHomeViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), list));
         binding.activityHomeViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.activityHomeTab));
         binding.activityHomeTab.addOnTabSelectedListener(new TabSelected(binding.activityHomeViewPager, this));
-        binding.activityHomeToolbarLeftImage.setOnClickListener(view -> {
-            startActivity(new Intent(this, SettingActivity.class));
-        });
     }
 
     @Override
@@ -59,30 +63,18 @@ public class HomeActivity extends AppCompatActivity implements TabLayoutListener
         switch (tab.getPosition()){
             case 0:
                 tab.setIcon(R.drawable.home_selected);
-                binding.activityHomeTitle.setText("主页");
-                binding.activityHomeFrame.setVisibility(View.GONE);
                 binding.activityHomeTab.getTabAt(1).setIcon(R.drawable.community_unselected);
                 binding.activityHomeTab.getTabAt(2).setIcon(R.drawable.user_unselected);
-                binding.activityHomeToolbarLeftImage.setVisibility(View.GONE);
-                binding.activityHomeToolbarRightImage.setVisibility(View.GONE);
                 break;
             case 1:
                 tab.setIcon(R.drawable.community_selected);
-                binding.activityHomeTitle.setText("社区");
-                binding.activityHomeFrame.setVisibility(View.GONE);
                 binding.activityHomeTab.getTabAt(0).setIcon(R.drawable.home_unselected);
                 binding.activityHomeTab.getTabAt(2).setIcon(R.drawable.user_unselected);
-                binding.activityHomeToolbarLeftImage.setVisibility(View.GONE);
-                binding.activityHomeToolbarRightImage.setVisibility(View.GONE);
                 break;
             case 2:
                 tab.setIcon(R.drawable.user_selected);
-                binding.activityHomeTitle.setText("个人资料");
-                binding.activityHomeFrame.setVisibility(View.VISIBLE);
                 binding.activityHomeTab.getTabAt(0).setIcon(R.drawable.home_unselected);
                 binding.activityHomeTab.getTabAt(1).setIcon(R.drawable.community_unselected);
-                binding.activityHomeToolbarLeftImage.setVisibility(View.VISIBLE);
-                binding.activityHomeToolbarRightImage.setVisibility(View.VISIBLE);
                 break;
             default:
                 break;

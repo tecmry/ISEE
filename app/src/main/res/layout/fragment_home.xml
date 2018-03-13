@@ -13,14 +13,14 @@
                 android:id="@+id/fragment_home_tab"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="25dp"
                 app:layout_constraintTop_toTopOf="parent"
                 android:background="@color/textColor_White"
                 app:tabTextColor="@color/textColor_Black"
                 app:tabGravity="center"
-                app:tabIndicatorColor="#FF9D1D"
+                app:tabIndicatorColor="@color/new_theme_color"
                 app:tabIndicatorHeight="4dp"
-                app:tabSelectedTextColor="#FF9D1D">
+                app:tabSelectedTextColor="@color/new_theme_color">
 
                 <android.support.design.widget.TabItem
                     android:layout_width="wrap_content"
@@ -47,12 +47,5 @@
             </android.support.v4.view.ViewPager>
 
         </android.support.constraint.ConstraintLayout>
-
-
-
-
-
-
-
 
 </layout>

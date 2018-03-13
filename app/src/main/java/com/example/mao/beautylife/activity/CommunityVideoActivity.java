@@ -12,7 +12,6 @@ import android.widget.TextView;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.adapter.PageAdapter;
 import com.example.mao.beautylife.databinding.ActivityCommunityVideoBinding;
-import com.example.mao.beautylife.databinding.ActivityHomeProductBinding;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;

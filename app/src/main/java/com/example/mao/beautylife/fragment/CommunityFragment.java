@@ -1,5 +1,6 @@
 package com.example.mao.beautylife.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -14,8 +15,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
-import com.avos.avoscloud.IntentUtil;
 import com.example.mao.beautylife.GlideApp;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.data.ColorData;
@@ -28,12 +27,16 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.loader.ImageLoaderInterface;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -41,25 +44,20 @@ import java.util.List;
  * Created by -- Mao on 2017/11/27.
  */
 
-public class CommunityFragment extends Fragment {
+public class CommunityFragment extends Fragment implements ImageLoaderInterface {
 
     private static final String TAG = "CommunityFragment";
     private FragmentCommunityBinding binding;
     private List<ColorData> colorDataList = new ArrayList<>();
     private List<VideoData> videoDataList = new ArrayList<>();
     private List<InfoData> infoDataList = new ArrayList<>();
-    private final int[] COMMUNITY_BANNER = {R.drawable.commnuity_banner_one,
-            R.drawable.commnuity_banner_two,
-            R.drawable.community_banner_three,
-            R.drawable.community_banner_four};
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_community, container, false);
-        GlideApp.with(this).load(R.drawable.one_selected).into(binding.fragmentCommunityOne);
+        initBanner();
         final Intent intent;
-
         binding.fragmentCommunityOne.setOnClickListener(v -> {
 
         });
@@ -77,36 +75,6 @@ public class CommunityFragment extends Fragment {
                 }else {
                     Toast.makeText(getActivity(), "服务器连接失败", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
-        binding.fragmentCommunityPager.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return COMMUNITY_BANNER.length;
-            }
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-                return view == object;
-            }
-
-            @NonNull
-            @Override
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                View view = inflater.inflate(R.layout.gallery_item, container, false);
-                ImageLoaderUtil.ImageLoader(view.findViewById(R.id.galley_item_image), COMMUNITY_BANNER[position]);
-                container.addView(view);
-                return view;
-            }
-
-            @Override
-            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                container.removeView((View) object);
-            }
-
-            @Override
-            public float getPageWidth(int position) {
-                return 0.8f;
             }
         });
 
@@ -134,6 +102,21 @@ public class CommunityFragment extends Fragment {
         }
     }
 
+    private void initBanner(){
+        binding.fragmentCommunityPager.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        binding.fragmentCommunityPager.setImageLoader(this);
+        List<Integer> list = new LinkedList<>();
+        list.add(R.drawable.commnuity_banner_one);
+        list.add(R.drawable.commnuity_banner_two);
+        list.add(R.drawable.community_banner_three);
+        list.add(R.drawable.community_banner_four);
+        binding.fragmentCommunityPager.setImages(list);
+        binding.fragmentCommunityPager.setBannerAnimation(Transformer.DepthPage);
+        binding.fragmentCommunityPager.isAutoPlay(true);
+        binding.fragmentCommunityPager.setDelayTime(1500);
+        binding.fragmentCommunityPager.start();
+    }
+
     private void request(StringCallback callback){
         OkGo.<String>get(HttpUtil.URL + "/home")
                 .tag(this)
@@ -141,6 +124,21 @@ public class CommunityFragment extends Fragment {
                 .cacheMode(CacheMode.DEFAULT)
                 .retryCount(5)
                 .execute(callback);
+    }
+
+    @Override
+    public void displayImage(Context context, Object path, View imageView) {
+        GlideApp.with(this)
+                .load(path)
+                .centerCrop()
+                .placeholder(R.drawable.place_holder)
+                .error(R.drawable.error)
+                .into((ImageView) imageView);
+    }
+
+    @Override
+    public View createImageView(Context context) {
+        return null;
     }
 
 }
