@@ -34,6 +34,7 @@ import com.avos.avoscloud.SaveCallback;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.activity.FullImageActivity;
 import com.example.mao.beautylife.activity.LoginActivity;
+import com.example.mao.beautylife.base.BaseFragment;
 import com.example.mao.beautylife.bottommenu.BottomMenuFragment;
 import com.example.mao.beautylife.bottommenu.MenuItem;
 import com.example.mao.beautylife.bottommenu.MenuItemOnClickListener;
@@ -48,7 +49,7 @@ import java.util.List;
  * Created by -- Mao on 2017/11/25.
  */
 
-public class SelfFragment extends Fragment {
+public class SelfFragment extends BaseFragment {
 
 
     private static final String TAG = "SelfFragment";
@@ -102,6 +103,16 @@ public class SelfFragment extends Fragment {
             bottomMenuFragment.show(getActivity().getFragmentManager(), "BottomMenuFragment");
         });
         return binding.getRoot();
+    }
+
+    @Override
+    protected void onFragmentFirstVisible() {
+        super.onFragmentFirstVisible();
+    }
+
+    @Override
+    protected boolean isFragmentVisible() {
+        return super.isFragmentVisible();
     }
 
     @Override

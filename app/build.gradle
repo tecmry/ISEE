@@ -22,10 +22,10 @@ android {
         resConfigs "zh"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
-//        ndk {
-//            //设置支持的SO库架构
-//            abiFilters 'arm64-v8a', 'armeabi'
-//        }
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'arm64-v8a', 'armeabi'
+        }
     }
     buildTypes {
         release {

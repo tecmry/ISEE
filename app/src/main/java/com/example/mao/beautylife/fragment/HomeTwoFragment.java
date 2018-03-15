@@ -28,6 +28,7 @@ public class HomeTwoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home_two, container, false);
+
         binding.homeTwoRecycler.setAdapter(new CommonRecyclerAdapter((parent, viewType) -> {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_two_item, parent, false);
             return new ItemHolder(view);

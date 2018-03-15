@@ -42,6 +42,11 @@ public class HomeThreeFragment extends Fragment {
         binding.homeThreeRecycler.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.homeThreeRecyclerBrand.setLayoutManager(new GridLayoutManager(getContext(), 4));
         binding.homeThreeRecyclerBrand.addItemDecoration(new GridDivider(getContext()));
+        initAdapter();
+        return binding.getRoot();
+    }
+
+    private void initAdapter(){
         binding.homeThreeRecycler.setAdapter(new CommonRecyclerAdapter((parent, viewType) -> {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_three_item, parent, false);
             return new ItemViewHolder(view);
@@ -63,7 +68,6 @@ public class HomeThreeFragment extends Fragment {
         },()->{
             return list.size();
         }));
-        return binding.getRoot();
     }
 
     class ItemViewHolder extends RecyclerView.ViewHolder{

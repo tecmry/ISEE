@@ -46,6 +46,7 @@
             android:background="@drawable/search_bg"
             android:transitionName="shareAnim"
             app:layout_constraintTop_toTopOf="parent"
+
             android:layout_marginTop="25dp"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"

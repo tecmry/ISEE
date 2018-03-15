@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.TabSelected;
 import com.example.mao.beautylife.adapter.PageAdapter;
+
 import com.example.mao.beautylife.databinding.ActivityHomeBinding;
 import com.example.mao.beautylife.fragment.CommunityFragment;
 import com.example.mao.beautylife.fragment.HomeFragment;
