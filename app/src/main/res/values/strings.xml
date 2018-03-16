@@ -82,6 +82,8 @@
     <string name="hot_search">热门搜索</string>
     <string name="search_edit">输入品牌、色号、肤色等关键字</string>
     <string name="推荐">推荐</string>
+    <string name="我的发布">我的发布</string>
+    <string name="我的足迹">我的足迹</string>
     <string name="点赞">点赞:</string>
     <string name="关注">关注</string>
     <string name="关注plus">+关注</string>

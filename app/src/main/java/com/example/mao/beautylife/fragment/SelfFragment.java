@@ -14,6 +14,7 @@ import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -25,6 +26,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.avos.avoscloud.AVException;
@@ -32,8 +34,10 @@ import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 import com.example.mao.beautylife.R;
+import com.example.mao.beautylife.TabSelected;
 import com.example.mao.beautylife.activity.FullImageActivity;
 import com.example.mao.beautylife.activity.LoginActivity;
+import com.example.mao.beautylife.adapter.PageAdapter;
 import com.example.mao.beautylife.base.BaseFragment;
 import com.example.mao.beautylife.bottommenu.BottomMenuFragment;
 import com.example.mao.beautylife.bottommenu.MenuItem;
@@ -42,8 +46,12 @@ import com.example.mao.beautylife.databinding.FragmentSelfBinding;
 import com.example.mao.beautylife.util.ImageLoaderUtil;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+
+import static com.tencent.plus.DensityUtil.dip2px;
 
 /**
  * Created by -- Mao on 2017/11/25.
@@ -66,6 +74,51 @@ public class SelfFragment extends BaseFragment {
         pref = PreferenceManager.getDefaultSharedPreferences(getContext());
         binding.selfUserName.setText(AVUser.getCurrentUser().getUsername());
         ImageLoaderUtil.ImageLoader(this, binding.selfUserImage, pref.getString("imageUrl", "http://ac-ecIHPESH.clouddn.com/b5364792bd7d4a31161f.png"));
+        initSelfImage();
+        List<Fragment> list = new LinkedList<>();
+        list.add(new SelfPubFragment());
+        list.add(new SelfHisFragment());
+        binding.selfUserViewPager.setAdapter(new PageAdapter(getFragmentManager(), list));
+        binding.fragmentSelfTab.setupWithViewPager(binding.selfUserViewPager);
+        binding.selfUserViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(binding.fragmentSelfTab));
+        binding.fragmentSelfTab.getTabAt(0).setText("我的发布");
+        binding.fragmentSelfTab.getTabAt(1).setText("我的足迹");
+        reflex(binding.fragmentSelfTab);
+        return binding.getRoot();
+    }
+
+    @Override
+    protected void onFragmentFirstVisible() {
+        super.onFragmentFirstVisible();
+    }
+
+    @Override
+    protected boolean isFragmentVisible() {
+        return super.isFragmentVisible();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case APPLY_WRITE:
+                openAlbum();
+                break;
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case CHOOSE_PHOTO:
+                handleImage(data);
+            default:
+                break;
+        }
+    }
+
+    private void initSelfImage(){
         binding.selfUserImage.setOnClickListener(view -> {
             BottomMenuFragment bottomMenuFragment = new BottomMenuFragment();
             List<MenuItem> menuItemList = new ArrayList<MenuItem>();
@@ -102,38 +155,6 @@ public class SelfFragment extends BaseFragment {
             bottomMenuFragment.setMenuItems(menuItemList);
             bottomMenuFragment.show(getActivity().getFragmentManager(), "BottomMenuFragment");
         });
-        return binding.getRoot();
-    }
-
-    @Override
-    protected void onFragmentFirstVisible() {
-        super.onFragmentFirstVisible();
-    }
-
-    @Override
-    protected boolean isFragmentVisible() {
-        return super.isFragmentVisible();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
-            case APPLY_WRITE:
-                openAlbum();
-                break;
-            default:
-                break;
-        }
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
-            case CHOOSE_PHOTO:
-                handleImage(data);
-            default:
-                break;
-        }
     }
 
     private void handleImage(Intent data){
@@ -186,4 +207,53 @@ public class SelfFragment extends BaseFragment {
         startActivityForResult(intent, CHOOSE_PHOTO);
     }
 
+    public static void reflex(final TabLayout tabLayout){
+        //了解源码得知 线的宽度是根据 tabView的宽度来设置的
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //拿到tabLayout的mTabStrip属性
+                    LinearLayout mTabStrip = (LinearLayout) tabLayout.getChildAt(0);
+
+                    int dp10 = dip2px(tabLayout.getContext(), 10);
+
+                    for (int i = 0; i < mTabStrip.getChildCount(); i++) {
+                        View tabView = mTabStrip.getChildAt(i);
+
+                        //拿到tabView的mTextView属性  tab的字数不固定一定用反射取mTextView
+                        Field mTextViewField = tabView.getClass().getDeclaredField("mTextView");
+                        mTextViewField.setAccessible(true);
+
+                        TextView mTextView = (TextView) mTextViewField.get(tabView);
+
+                        tabView.setPadding(0, 0, 0, 0);
+
+                        //因为我想要的效果是   字多宽线就多宽，所以测量mTextView的宽度
+                        int width = 0;
+                        width = mTextView.getWidth();
+                        if (width == 0) {
+                            mTextView.measure(0, 0);
+                            width = mTextView.getMeasuredWidth();
+                        }
+
+                        //设置tab左右间距为10dp  注意这里不能使用Padding 因为源码中线的宽度是根据 tabView的宽度来设置的
+                        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tabView.getLayoutParams();
+                        params.width = width ;
+                        params.leftMargin = dp10;
+                        params.rightMargin = dp10;
+                        tabView.setLayoutParams(params);
+
+                        tabView.invalidate();
+                    }
+
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
 }

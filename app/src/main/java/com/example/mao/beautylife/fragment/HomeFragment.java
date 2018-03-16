@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.mao.beautylife.R;
+import com.example.mao.beautylife.TabSelected;
 import com.example.mao.beautylife.adapter.PageAdapter;
 import com.example.mao.beautylife.databinding.FragmentHomeBinding;
 import com.lzy.okgo.OkGo;
@@ -65,7 +66,7 @@ public class HomeFragment extends Fragment {
         OkGo.getInstance().cancelTag(TAG);
     }
 
-    public void reflex(final TabLayout tabLayout){
+    public static void reflex(final TabLayout tabLayout){
         //了解源码得知 线的宽度是根据 tabView的宽度来设置的
         tabLayout.post(new Runnable() {
             @Override
