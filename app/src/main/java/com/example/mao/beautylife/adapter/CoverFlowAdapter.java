@@ -55,6 +55,7 @@ public class CoverFlowAdapter extends PagerAdapter implements ViewPager.OnPageCh
         sHeightPadding = dp2px(32);
     }
 
+
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView(mViewList.get(position));
