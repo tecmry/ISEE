@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.example.mao.beautylife.video.SampleVideo
+        android:id="@+id/video_player"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+       />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_below="@id/video_player"
+    android:id="@+id/LL_videonews"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TV_videotitle"
+        android:hint="@string/titlehint"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:textColor="@color/textColor_Black"
+        android:textSize="16dp"
+
+        />
+</LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LL_videonews"
+        android:id="@+id/RL_video_FirstTitle"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text = "视频简介:"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/textColor_Black"
+            android:layout_marginTop="5dp"
+            android:id="@+id/Tv_video_one"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="文本框文本框。。。。。。。。。。。。。。。。"
+            android:maxLines="2"
+            android:id="@+id/Tv_newscontent"
+            android:textColor="@color/textColor_Black"
+            android:layout_toRightOf="@+id/Tv_video_one"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_below="@+id/Tv_newscontent"
+            android:layout_marginLeft="40dp"
+            android:textSize="8sp"
+            android:textColor="@color/textColor_TagsGrey"
+            android:text="点击率: 5555 "
+            android:maxLines="1"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFBEF"
+        android:id="@+id/RL_usercontent"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/RL_video_FirstTitle"
+        >
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/videonews_userImg"
+            android:background="#FEE296"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="3dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="3dp"
+            android:id="@+id/videonews_username"
+            android:textColorHint="@color/textColor_Black"
+            android:textColor="@color/textColor_Black"
+            android:maxLines="1"
+            android:hint = "用户名"
+            android:textSize="13sp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/videonews_usertagsone"
+            android:textColor="@color/textColor_TagsGrey"
+            android:maxLines="1"
+            android:layout_below="@+id/videonews_username"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="73dp"
+            android:textSize="11sp"
+            android:hint="@string/个人标签"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/videonews_usertagstwo"
+            android:maxLines="1"
+            android:textColor="@color/textColor_TagsGrey"
+            android:layout_toRightOf = "@+id/videonews_usertagsone"
+            android:layout_below="@+id/videonews_username"
+            android:layout_marginTop="3dp"
+            android:textSize="11sp"
+            android:layout_marginLeft="10dp"
+            android:hint="@string/个人标签"
+            />
+
+        <Button
+            android:layout_width="48dp"
+            android:layout_height="21dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_bg_shape"
+            android:layout_marginRight="20dp"
+            android:padding="2dp"
+            android:text="+关注"
+            android:textSize="10sp" />
+    </RelativeLayout>
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        app:tabSelectedTextColor="#FEE296"
+        app:tabTextColor="@color/textColor_Black"
+        app:tabIndicatorColor="#FEE296"
+        android:layout_below="@+id/RL_usercontent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="涉及产品"
+            android:id = "@+id/TabItem_one"
+            />
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="推荐视频"
+            android:id="@+id/TabItem_two"
+            />
+    </android.support.design.widget.TabLayout>
+</RelativeLayout>
+
+</android.support.v4.widget.NestedScrollView>
