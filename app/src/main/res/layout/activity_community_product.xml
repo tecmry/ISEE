@@ -9,7 +9,16 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/community_product_bg"
         tools:context="com.example.mao.beautylife.activity.CommunityProductActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="65dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/community_product_white_bg"/>
 
     </android.support.constraint.ConstraintLayout>
 
