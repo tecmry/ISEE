@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srlEnablePureScrollMode="true"
         app:srlEnableLoadmore="true"
         app:srlDragRate="1">
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/login_bg">
-
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/activity_login_edit_account"
             android:layout_width="match_parent"
@@ -24,6 +20,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_centerInParent="true"
+            android:maxLines="1"
             android:textCursorDrawable="@null"
             android:hint="@string/请输入用户名或邮箱"
             app:met_textColorHint="@color/textColor_White"
@@ -37,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
+            android:maxLines="1"
             android:layout_below="@+id/activity_login_edit_account"
             android:layout_centerHorizontal="true"
             android:textCursorDrawable="@null"
@@ -115,5 +113,4 @@
     </RelativeLayout>
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-
 </layout>
