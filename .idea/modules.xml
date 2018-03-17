@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BeautyLife.iml" filepath="$PROJECT_DIR$/BeautyLife.iml" />
+      <module fileurl="file://D:\ISEE\BeautyLife.iml" filepath="D:\ISEE\BeautyLife.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ISEE.iml" filepath="$PROJECT_DIR$/ISEE.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

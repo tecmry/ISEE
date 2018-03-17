@@ -85,8 +85,9 @@
     <string name="day">2018.03.2</string>
     <string name="time">13:30</string>
     <dimen name="space">8dp</dimen>
+    <string name="titlehint">此处是标题此处是标题此处是标题</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="标题hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
