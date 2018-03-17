@@ -27,6 +27,9 @@ public class CoverFlowAdapter extends PagerAdapter implements ViewPager.OnPageCh
      */
     public static int sWidthPadding;
 
+
+
+
     public static int sHeightPadding;
 
     /**
