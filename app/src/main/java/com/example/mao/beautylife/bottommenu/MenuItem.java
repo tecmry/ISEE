@@ -4,8 +4,8 @@ package com.example.mao.beautylife.bottommenu;
  * Created by guorui.he on 2016/6/19.
  */
 public class MenuItem {
-    public  MenuItem() {
 
+    public  MenuItem() {
     }
 
     /**
@@ -66,7 +66,7 @@ public class MenuItem {
     private MenuItemOnClickListener menuItemOnClickListener;
 
 
-    public  enum MenuItemStyle{
+    public enum MenuItemStyle{
         COMMON , STRESS
     }
 

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="bottom"
+
     android:paddingRight="10dp"
     android:paddingLeft="10dp"
     android:orientation="vertical"
@@ -15,7 +15,9 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/bottom_menu_layout_margin"
         android:background="@color/bottom_menu_layout_color" >
+
         <ListView
+
             android:id="@+id/lv_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

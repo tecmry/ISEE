@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/common_bg">
+
+        <FrameLayout
+            android:id="@+id/activity_collect_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/textColor_White"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/activity_info_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/textColor_White">
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/activity_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="书签管理"
+                android:textSize="20sp"
+                android:textColor="@color/new_theme_color"/>
+
+            <ImageView
+                android:id="@+id/activity_collect_back"
+                android:layout_width="15dp"
+                android:layout_height="25dp"
+                android:src="@drawable/back"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"/>
+
+        </FrameLayout>
+
+        <com.example.mao.beautylife.view.NoScrollViewPager
+            android:id="@+id/activity_collect_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/activity_collect_tab"
+            android:layout_below="@+id/activity_collect_frame">
+        </com.example.mao.beautylife.view.NoScrollViewPager>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/activity_collect_tab"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/textColor_White"
+            app:tabIndicatorHeight="0dp"
+            android:clipChildren="false">
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/home_selected"/>
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/community_unselected"/>
+
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/user_unselected"/>
+
+        </android.support.design.widget.TabLayout>
+
+    </RelativeLayout>
+
+
+</layout>
+

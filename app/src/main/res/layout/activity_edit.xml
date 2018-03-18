@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/设置"
+                android:text="@string/编辑个人信息"
                 android:textSize="20sp"
                 android:textColor="@color/new_theme_color"/>
 
@@ -46,7 +46,7 @@
         <ImageView
             android:id="@+id/activity_setting_one"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="90dp"
             android:background="@color/textColor_White"
             android:layout_marginTop="2dp"
             app:layout_constraintTop_toBottomOf="@+id/activity_setting_frame"/>
@@ -58,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/activity_setting_one"
             app:layout_constraintBottom_toBottomOf="@+id/activity_setting_one"
-            android:text="清除缓存"
+            android:text="头像"
             android:textColor="@color/textColor_Black"
             android:textSize="15sp"/>
 
@@ -105,7 +105,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/activity_setting_two"
             app:layout_constraintBottom_toBottomOf="@+id/activity_setting_two"
-            android:text="夜间模式"
+            android:text="用户名"
             android:textColor="@color/textColor_Black"
             android:textSize="15sp"/>
 
@@ -133,7 +133,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/activity_setting_three"
             app:layout_constraintBottom_toBottomOf="@+id/activity_setting_three"
-            android:text="分享"
+            android:text="地区"
             android:textColor="@color/textColor_Black"
             android:textSize="15sp"/>
 
@@ -142,7 +142,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:background="@color/textColor_White"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="2dp"
             app:layout_constraintTop_toBottomOf="@+id/activity_setting_three"/>
 
         <ImageView
@@ -161,7 +161,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/activity_setting_four"
             app:layout_constraintBottom_toBottomOf="@+id/activity_setting_four"
-            android:text="关于ISEE"
+            android:text="年龄"
             android:textColor="@color/textColor_Black"
             android:textSize="15sp"/>
 
@@ -189,37 +189,60 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/activity_setting_five"
             app:layout_constraintBottom_toBottomOf="@+id/activity_setting_five"
-            android:text="帮助"
+            android:text="邮箱"
             android:textColor="@color/textColor_Black"
             android:textSize="15sp"/>
 
         <ImageView
             android:id="@+id/activity_setting_six"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="135dp"
             android:background="@color/textColor_White"
-            android:layout_marginTop="2dp"
+            android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/activity_setting_five"/>
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="30dp"
-            android:background="@drawable/more"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/activity_setting_six"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_setting_six"/>
-
         <TextView
+            android:id="@+id/activity_setting_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
+            android:layout_marginTop="15dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/activity_setting_six"
-            app:layout_constraintBottom_toBottomOf="@+id/activity_setting_six"
-            android:text="意见反馈"
-            android:textColor="@color/textColor_Black"
+            android:text="@string/我的标签"
+            android:textColor="@color/new_theme_color"
             android:textSize="15sp"/>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="2dp"
+            android:background="@color/new_theme_color"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_setting_label"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_setting_label"
+            app:layout_constraintEnd_toStartOf="@id/activity_setting_label"/>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="2dp"
+            android:background="@color/new_theme_color"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toTopOf="@+id/activity_setting_label"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_setting_label"
+            app:layout_constraintStart_toEndOf="@id/activity_setting_label"/>
+
+        <Button
+            android:id="@+id/activity_setting_exit"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="45dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_setting_six"
+            android:text="@string/exit"
+            android:textSize="16sp"
+            android:textColor="@color/textColor_White"
+            android:background="@color/new_theme_color" />
 
     </android.support.constraint.ConstraintLayout>
 

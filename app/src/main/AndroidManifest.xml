@@ -63,12 +63,15 @@
             android:exported="true" />
 
         <activity
-            android:name=".activity.SettingActivity"
+            android:name=".activity.EditActivity"
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.FullImageActivity" />
         <activity android:name=".activity.CommunityVideoActivity" />
         <activity android:name=".activity.TryActivity" />
-        <activity android:name=".activity.CommunityProductActivity"></activity>
+        <activity android:name=".activity.CommunityProductActivity" />
+        <activity android:name=".activity.SettingActivity" />
+        <activity android:name=".activity.InfoActivity" />
+        <activity android:name=".activity.CollectActivity"></activity>
     </application>
 
 </manifest>

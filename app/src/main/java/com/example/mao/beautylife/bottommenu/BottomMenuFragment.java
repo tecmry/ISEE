@@ -48,29 +48,22 @@ public class BottomMenuFragment extends DialogFragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         getDialog().requestWindowFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));//设置背景透明
-
         getDialog().getWindow().setWindowAnimations(R.style.menu_animation);//添加一组进出动画
-
         View view = inflater.inflate(R.layout.fragment_bottom_menu, container, false);
-
-        TextView tv_cancel = (TextView) view.findViewById(R.id.tv_cancel);
+        TextView tv_cancel = view.findViewById(R.id.tv_cancel);
         tv_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG, "onClick: tv_cancel");
-                BottomMenuFragment.this.dismiss();
+                dismiss();
             }
         });
 
-
-
-        ListView lv_menu = (ListView) view.findViewById(R.id.lv_menu);
-
+        ListView lv_menu = view.findViewById(R.id.lv_menu);
         MenuItemAdapter menuItemAdapter = new MenuItemAdapter(getActivity().getBaseContext(), this.menuItems);
         lv_menu.setAdapter(menuItemAdapter);
 

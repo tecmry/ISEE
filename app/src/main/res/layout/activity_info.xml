@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/common_bg">
+
+        <FrameLayout
+            android:id="@+id/activity_info_frame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/textColor_White"
+            android:fitsSystemWindows="true">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/activity_info_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/textColor_White">
+            </android.support.v7.widget.Toolbar>
+
+            <TextView
+                android:id="@+id/activity_info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/信息"
+                android:textSize="20sp"
+                android:textColor="@color/new_theme_color"/>
+
+            <ImageView
+                android:id="@+id/activity_info_back"
+                android:layout_width="15dp"
+                android:layout_height="25dp"
+                android:src="@drawable/back"
+                android:layout_marginStart="10dp"
+                android:layout_gravity="center_vertical"/>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/activity_info_one"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/textColor_White"
+            android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_info_frame"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/activity_info_one_image"
+            app:layout_constraintTop_toTopOf="@+id/activity_info_one"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_info_one"
+            android:text="官方推送"
+            android:textColor="@color/textColor_Black"
+            android:textSize="15sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_info_one_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_info_one"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_info_one"/>
+
+        <ImageView
+            android:id="@+id/activity_info_two"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/textColor_White"
+            android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_info_one"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/activity_info_two_image"
+            app:layout_constraintTop_toTopOf="@+id/activity_info_two"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_info_two"
+            android:text="系统消息"
+            android:textColor="@color/textColor_Black"
+            android:textSize="15sp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_info_two_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_info_two"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_info_two"/>
+
+        <ImageView
+            android:id="@+id/activity_info_three"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/textColor_White"
+            android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@+id/activity_info_two"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/activity_info_three_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/activity_info_three"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_info_three"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/activity_info_three_image"
+            app:layout_constraintTop_toTopOf="@+id/activity_info_three"
+            app:layout_constraintBottom_toBottomOf="@+id/activity_info_three"
+            android:text="互动管理"
+            android:textColor="@color/textColor_Black"
+            android:textSize="15sp"/>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</layout>
+

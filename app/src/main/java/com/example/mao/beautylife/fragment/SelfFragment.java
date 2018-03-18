@@ -1,53 +1,29 @@
 package com.example.mao.beautylife.fragment;
 
-import android.Manifest;
-import android.content.ContentUris;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.databinding.DataBindingUtil;
-import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.provider.DocumentsContract;
-import android.provider.MediaStore;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.SaveCallback;
 import com.example.mao.beautylife.R;
-import com.example.mao.beautylife.TabSelected;
-import com.example.mao.beautylife.activity.FullImageActivity;
-import com.example.mao.beautylife.activity.LoginActivity;
+import com.example.mao.beautylife.activity.EditActivity;
 import com.example.mao.beautylife.adapter.PageAdapter;
 import com.example.mao.beautylife.base.BaseFragment;
-import com.example.mao.beautylife.bottommenu.BottomMenuFragment;
-import com.example.mao.beautylife.bottommenu.MenuItem;
-import com.example.mao.beautylife.bottommenu.MenuItemOnClickListener;
 import com.example.mao.beautylife.databinding.FragmentSelfBinding;
 import com.example.mao.beautylife.util.ImageLoaderUtil;
 
-import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -62,14 +38,12 @@ public class SelfFragment extends BaseFragment {
 
     private static final String TAG = "SelfFragment";
     private FragmentSelfBinding binding;
-    private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)  {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_self, container, false);
-        pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
         binding.selfUserName.setText(AVUser.getCurrentUser().getUsername());
         ImageLoaderUtil.ImageLoader(this, binding.selfUserImage, pref.getString("imageUrl", "http://ac-ecIHPESH.clouddn.com/b5364792bd7d4a31161f.png"));
         List<Fragment> list = new LinkedList<>();
@@ -81,6 +55,11 @@ public class SelfFragment extends BaseFragment {
         binding.fragmentSelfTab.getTabAt(0).setText("我的发布");
         binding.fragmentSelfTab.getTabAt(1).setText("我的足迹");
         reflex(binding.fragmentSelfTab);
+
+        binding.selfUserImage.setOnClickListener(v -> {
+            startActivity(new Intent(getContext(), EditActivity.class));
+        });
+
         return binding.getRoot();
     }
 
