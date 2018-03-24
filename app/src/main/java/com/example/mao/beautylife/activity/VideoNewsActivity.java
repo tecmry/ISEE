@@ -5,12 +5,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Transition;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,13 +24,18 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.data.VideoNewsData;
+import com.example.mao.beautylife.fragment.AboutProductFragment;
+import com.example.mao.beautylife.fragment.RecommendVideoFragment;
 import com.example.mao.beautylife.listener.OnTransitionListener;
 import com.example.mao.beautylife.video.SampleVideo;
 import com.example.mao.beautylife.video.SwitchVideoModel;
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.tencent.plus.DensityUtil.dip2px;
 
 /**
  * Created by Tecmry on 2018/3/23.
@@ -47,6 +57,8 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
     private Button focusUser;
 
     private ImageView userHead;
+    private TabLayout mTabLayout;
+    private ViewPager mViewPager;
 
     private VideoNewsData newsData;
 
@@ -56,11 +68,14 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
     private Transition transition;
     private boolean isTransition;
     private OrientationUtils orientationUtils;
+
+    private List<Fragment> fragmentsList;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_video_news);
         isTransition = getIntent().getBooleanExtra(TRANSITION, false);
+        fragmentsList = new ArrayList<Fragment>();
         init();
 
     }
@@ -78,6 +93,25 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
 
         userHead = findViewById(R.id.videonews_userImg);
         sampleVideo = findViewById(R.id.video_player);
+
+        mTabLayout = findViewById(R.id.TL_One);
+        mViewPager = findViewById(R.id.VP_One);
+
+        fragmentsList.add(new AboutProductFragment());
+        fragmentsList.add(new RecommendVideoFragment());
+
+        mViewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return fragmentsList.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return fragmentsList.size();
+            }
+        });
+        mTabLayout.setupWithViewPager(mViewPager);
 
         newsData = (VideoNewsData)getIntent().getSerializableExtra("newsData");
 
@@ -126,6 +160,7 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
                 onBackPressed();
             }
         });
+       reflex(mTabLayout);
         initTransition();
     }
     @Override
@@ -183,5 +218,54 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
     protected void onResume() {
         super.onResume();
         sampleVideo.onVideoResume();
+    }
+    public static void reflex(final TabLayout tabLayout){
+        //了解源码得知 线的宽度是根据 tabView的宽度来设置的
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    //拿到tabLayout的mTabStrip属性
+                    LinearLayout mTabStrip = (LinearLayout) tabLayout.getChildAt(0);
+
+                    int dp10 = dip2px(tabLayout.getContext(), 10);
+
+                    for (int i = 0; i < mTabStrip.getChildCount(); i++) {
+                        View tabView = mTabStrip.getChildAt(i);
+
+                        //拿到tabView的mTextView属性  tab的字数不固定一定用反射取mTextView
+                        Field mTextViewField = tabView.getClass().getDeclaredField("mTextView");
+                        mTextViewField.setAccessible(true);
+
+                        TextView mTextView = (TextView) mTextViewField.get(tabView);
+
+                        tabView.setPadding(0, 0, 0, 0);
+
+                        //因为我想要的效果是   字多宽线就多宽，所以测量mTextView的宽度
+                        int width = 0;
+                        width = mTextView.getWidth();
+                        if (width == 0) {
+                            mTextView.measure(0, 0);
+                            width = mTextView.getMeasuredWidth();
+                        }
+
+                        //设置tab左右间距为10dp  注意这里不能使用Padding 因为源码中线的宽度是根据 tabView的宽度来设置的
+                        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tabView.getLayoutParams();
+                        params.width = width ;
+                        params.leftMargin = dp10;
+                        params.rightMargin = dp10;
+                        tabView.setLayoutParams(params);
+
+                        tabView.invalidate();
+                    }
+
+                } catch (NoSuchFieldException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 }

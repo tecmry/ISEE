@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     >
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -151,6 +152,7 @@
         app:tabTextColor="@color/textColor_Black"
         app:tabIndicatorColor="#FEE296"
         android:layout_below="@+id/RL_usercontent"
+        android:id="@+id/TL_One"
         android:layout_height="wrap_content">
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
@@ -164,7 +166,50 @@
             android:text="推荐视频"
             android:id="@+id/TabItem_two"
             />
+
+    </android.support.design.widget.TabLayout>
+<android.support.v4.view.ViewPager
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/TL_One"
+    android:layout_above="@+id/TL_Two"
+    android:id="@+id/VP_One"
+    />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/TL_Two"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        app:tabIndicatorColor="#FFFFFF"
+        app:tabTextColor="@color/textColor_Black">
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/TabItem_Share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="分享"
+
+            />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/TabItem_Save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="收藏" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/TabItem_Reward"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="打赏" />
+
+        <android.support.design.widget.TabItem
+            android:id="@+id/TabItem_Like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点赞" />
     </android.support.design.widget.TabLayout>
 </RelativeLayout>
-
 </android.support.v4.widget.NestedScrollView>
