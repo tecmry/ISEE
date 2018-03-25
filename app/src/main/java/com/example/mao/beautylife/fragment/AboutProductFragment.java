@@ -15,6 +15,11 @@ import com.example.mao.beautylife.base.BaseFragment;
  */
 
 public class AboutProductFragment extends BaseFragment {
+
+    /**
+     *
+     *
+     * **/
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
