@@ -48,7 +48,7 @@
             android:layout_alignParentRight="true"
             android:maxLines="1"
             android:textColor="#878787"
-            android:text="2018.10"
+            android:text="@string/day"
             android:layout_marginRight="6dp"
             android:id="@+id/Tv_RecommendvideoItemTimeLeft"
             />
@@ -97,7 +97,7 @@
                 android:layout_alignParentRight="true"
                 android:maxLines="1"
                 android:textColor="#878787"
-                android:text="2018.10"
+                android:text="@string/day"
                 android:layout_marginRight="6dp"
                 android:id="@+id/Tv_RecommendvideoItemTimeRight"
                 />
