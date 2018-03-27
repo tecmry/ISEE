@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mao.beautylife.R;
+import com.example.mao.beautylife.adapter.RecomandVideoRecyclerAdapter;
 import com.example.mao.beautylife.base.BaseFragment;
 import com.example.mao.beautylife.data.NetArticleItemData;
 import com.example.mao.beautylife.service.RecommendVideoInterface;
@@ -33,7 +34,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RecommendVideoFragment extends BaseFragment {
 
     private RecyclerView mRecyclerView;
-    private List<NetArticleItemData.VideosBean> list = new ArrayList<>();
+    private List<NetArticleItemData.VideosBean> videosBeanList = new ArrayList<>();
     private Handler handler;
     @Nullable
     @Override
@@ -48,14 +49,14 @@ public class RecommendVideoFragment extends BaseFragment {
                     case 1:
                         //在这里处理通过网路请求获得的视频列表
                         ArrayList data = msg.getData().getParcelableArrayList("data");
-                        list = (List<NetArticleItemData.VideosBean>)data.get(0);
+                        videosBeanList = (List<NetArticleItemData.VideosBean>)data.get(0);
                 }
             }
         };
         mRecyclerView = view.findViewById(R.id.Rv_video_news);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        mRecyclerView.setAdapter(new RecomandVideoRecyclerAdapter(videosBeanList,getContext()));
         return view;
     }
     @Override

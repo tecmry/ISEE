@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.mao.beautylife.R;
 import com.example.mao.beautylife.data.NetArticleItemData;
 
@@ -37,7 +40,25 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
 
     @Override
     public void onBindViewHolder(@NonNull RecomandVideoRecyclerAdapter.ViewHolder holder, int position) {
-
+        if ((position+1)%2==0)
+        {
+            if (dataList.size()!=0)
+            {
+                holder.Tv_LeftTitle.setText(dataList.get(2).getTitle());
+                holder.Tv_RightTitle.setText(dataList.get(3).getTitle());
+                Glide.with(mContext).load(dataList.get(2).getCoverUrl()).into(holder.Iv_Left);
+                Glide.with(mContext).load(dataList.get(3).getCoverUrl()).into(holder.Iv_Right);
+                holder.Tv_LeftAuthor.setText(dataList.get(2).getNickname());
+                holder.Tv_RightAuthor.setText(dataList.get(3).getNickname());
+            }
+        }else {
+            holder.Tv_LeftTitle.setText(dataList.get(0).getTitle());
+            holder.Tv_RightTitle.setText(dataList.get(1).getTitle());
+            Glide.with(mContext).load(dataList.get(0).getCoverUrl()).into(holder.Iv_Left);
+            Glide.with(mContext).load(dataList.get(1).getCoverUrl()).into(holder.Iv_Right);
+            holder.Tv_LeftAuthor.setText(dataList.get(0).getNickname());
+            holder.Tv_RightAuthor.setText(dataList.get(1).getNickname());
+        }
     }
 
     @Override
@@ -46,8 +67,20 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView Iv_Left;
+        private ImageView Iv_Right;
+        private TextView  Tv_LeftTitle;
+        private TextView  Tv_RightTitle;
+        private TextView  Tv_LeftAuthor;
+        private TextView  Tv_RightAuthor;
         public ViewHolder(View itemView) {
             super(itemView);
+            Iv_Left = itemView.findViewById(R.id.Iv_RecommendvideoItemLeft);
+            Iv_Right = itemView.findViewById(R.id.Iv_RecommendvideoItemRight);
+            Tv_LeftAuthor = itemView.findViewById(R.id.Tv_RecommendvideoItemAuthorLeft);
+            Tv_RightAuthor = itemView.findViewById(R.id.Tv_RecommendvideoItemAuthorRight);
+            Tv_LeftTitle = itemView.findViewById(R.id.Tv_RecommendvideoItemTitleLeft);
+            Tv_RightTitle = itemView.findViewById(R.id.Tv_RecommendvideoItemTimeRight);
         }
     }
 }
