@@ -2,13 +2,14 @@ package com.example.mao.beautylife.data;
 
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Tecmry on 2018/3/26.
  */
 
-public class NetArticleItemData  {
+public class NetArticleItemData implements Serializable {
 
     /**
      * tColors : [{"id":0,"userName":"可爱杏杏","brandName":"欧莱雅","imgUrl":"http://104.236.187.61:8080/noNameApp/img/可爱杏杏--欧莱雅--300.jpg","number":"300"},{"id":0,"userName":"Temi酱","brandName":"GIVENCHY","imgUrl":"http://104.236.187.61:8080/noNameApp/img/Temi酱--GIVENCHY--326.jpg","number":"326"},{"id":0,"userName":"盼盼高高","brandName":"RAD","imgUrl":"http://104.236.187.61:8080/noNameApp/img/盼盼高高--RAD--A12.jpg","number":"A12"},{"id":0,"userName":"Temi酱","brandName":"KIKO","imgUrl":"http://104.236.187.61:8080/noNameApp/img/Temi酱--KIKO--407.jpg","number":"407"}]
@@ -120,7 +121,7 @@ public class NetArticleItemData  {
         }
     }
 
-    public static class VideosBean {
+    public static class VideosBean implements Serializable{
         /**
          * id : 81
          * pageid : prxdf1409aa03115f8c0aa9318efe0b1cb0

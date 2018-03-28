@@ -7,6 +7,7 @@
     android:layout_width="0dp"
     android:layout_height="match_parent"
     android:layout_weight="1"
+    android:id="@+id/LL_LeftItem"
     android:orientation="vertical"
     >
 
@@ -59,6 +60,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
+        android:id="@+id/LL_RightItem"
         >
         <ImageView
             android:id="@+id/Iv_RecommendvideoItemRight"

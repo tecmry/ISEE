@@ -23,7 +23,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mao.beautylife.R;
-import com.example.mao.beautylife.data.VideoNewsData;
+import com.example.mao.beautylife.data.NetArticleItemData;
 import com.example.mao.beautylife.fragment.AboutProductFragment;
 import com.example.mao.beautylife.fragment.RecommendVideoFragment;
 import com.example.mao.beautylife.listener.OnTransitionListener;
@@ -60,7 +60,7 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
 
-    private VideoNewsData newsData;
+    private NetArticleItemData.VideosBean newsData;
 
     private SampleVideo sampleVideo;
     private List<SwitchVideoModel> list = new ArrayList<>();
@@ -113,29 +113,28 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
         });
         mTabLayout.setupWithViewPager(mViewPager);
 
-        newsData = (VideoNewsData)getIntent().getSerializableExtra("newsData");
+      newsData = (NetArticleItemData.VideosBean)getIntent().getSerializableExtra("newsData");
 
         if (newsData!=null)
         {
             videoTitle.setText(newsData.getTitle());
-            videoNewsContentTitle.setText(newsData.getContent());
-            videoDetails.setText(newsData.getVideoDetails());
-            userName.setText(newsData.getVideoUserName());
-            Glide.with(this).load(newsData.getVideoUserHeadUrl()).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(userHead);
-            if (newsData.getVideoUserTags().size()!=0)
+            videoDetails.setText("播放量:" + newsData.getDuration() + "日排行:" + "1000+" + "收藏" + newsData.getLikeTimes());
+            userName.setText(newsData.getNickname());
+            Glide.with(this).load(newsData.getCoverUrl()).apply(RequestOptions.bitmapTransform(new CircleCrop())).into(userHead);
+            if (newsData.getLabels().size()!=0)
             {
-                if (newsData.getVideoUserTags().size()==1)
+                if (newsData.getLabels().size()==1)
                 {
-                    userTagsOne.setText(newsData.getVideoUserTags().get(0));
+                    userTagsOne.setText(newsData.getLabels().get(0));
                     userTagsTwo.setVisibility(View.GONE);
                 }
-                if (newsData.getVideoUserTags().size()==2)
+                if (newsData.getLabels().size()==2)
                 {
-                    userTagsOne.setText(newsData.getVideoUserTags().get(0));
-                    userTagsTwo.setText(newsData.getVideoUserTags().get(1));
+                    userTagsOne.setText(newsData.getLabels().get(0));
+                    userTagsTwo.setText(newsData.getLabels().get(1));
                 }
             }
-            list.add(new SwitchVideoModel("标清",newsData.getVideoUrl()));
+            list.add(new SwitchVideoModel("标清",newsData.getVideourl()));
 
         }else {
             Toast.makeText(this,"数据传输错误()",Toast.LENGTH_SHORT).show();

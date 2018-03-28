@@ -1,16 +1,20 @@
 package com.example.mao.beautylife.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.mao.beautylife.R;
+import com.example.mao.beautylife.activity.VideoNewsActivity;
 import com.example.mao.beautylife.data.NetArticleItemData;
 
 import java.util.List;
@@ -23,7 +27,16 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
     private List<NetArticleItemData.VideosBean> dataList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private OnItemClickListener mItemClickListener;
 
+    //item的回调接口
+    public interface OnItemClickListener{
+        void onItemClick(View view,int Position);
+    }
+    //定义一个设置点击监听器的方法
+    public void setOnItemClickListener(OnItemClickListener itemClickListener) {
+        this.mItemClickListener = itemClickListener;
+    }
     public RecomandVideoRecyclerAdapter(List<NetArticleItemData.VideosBean> dataList, Context mContext )
     {
         this.dataList = dataList;
@@ -50,6 +63,22 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
                 Glide.with(mContext).load(dataList.get(3).getCoverUrl()).into(holder.Iv_Right);
                 holder.Tv_LeftAuthor.setText(dataList.get(2).getNickname());
                 holder.Tv_RightAuthor.setText(dataList.get(3).getNickname());
+                holder.LL_RightItem.setOnClickListener(view -> {
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, VideoNewsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("newsData", dataList.get(2));
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                });
+                holder.LL_RightItem.setOnClickListener(view -> {
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, VideoNewsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("newsData", dataList.get(3));
+                    intent.putExtras(bundle);
+                    mContext.startActivity(intent);
+                });
             }
         }else {
             holder.Tv_LeftTitle.setText(dataList.get(0).getTitle());
@@ -58,7 +87,24 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
             Glide.with(mContext).load(dataList.get(1).getCoverUrl()).into(holder.Iv_Right);
             holder.Tv_LeftAuthor.setText(dataList.get(0).getNickname());
             holder.Tv_RightAuthor.setText(dataList.get(1).getNickname());
+            holder.LL_RightItem.setOnClickListener(view -> {
+                Intent intent = new Intent();
+                intent.setClass(mContext, VideoNewsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("newsData", dataList.get(0));
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            });
+            holder.LL_RightItem.setOnClickListener(view -> {
+                Intent intent = new Intent();
+                intent.setClass(mContext, VideoNewsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("newsData", dataList.get(1));
+                intent.putExtras(bundle);
+                mContext.startActivity(intent);
+            });
         }
+
     }
 
     @Override
@@ -73,6 +119,8 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
         private TextView  Tv_RightTitle;
         private TextView  Tv_LeftAuthor;
         private TextView  Tv_RightAuthor;
+        private LinearLayout LL_LeftItem;
+        private LinearLayout LL_RightItem;
         public ViewHolder(View itemView) {
             super(itemView);
             Iv_Left = itemView.findViewById(R.id.Iv_RecommendvideoItemLeft);
@@ -81,6 +129,8 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
             Tv_RightAuthor = itemView.findViewById(R.id.Tv_RecommendvideoItemAuthorRight);
             Tv_LeftTitle = itemView.findViewById(R.id.Tv_RecommendvideoItemTitleLeft);
             Tv_RightTitle = itemView.findViewById(R.id.Tv_RecommendvideoItemTimeRight);
+            LL_LeftItem = itemView.findViewById(R.id.LL_LeftItem);
+            LL_RightItem = itemView.findViewById(R.id.LL_RightItem);
         }
     }
 }
