@@ -9,6 +9,7 @@ import android.database.Cursor;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
@@ -16,7 +17,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -26,7 +26,6 @@ import com.example.mao.beautylife.bottommenu.BottomMenuFragment;
 import com.example.mao.beautylife.bottommenu.MenuItem;
 import com.example.mao.beautylife.bottommenu.MenuItemOnClickListener;
 import com.example.mao.beautylife.databinding.ActivityEditBinding;
-import com.example.mao.beautylife.databinding.ActivitySettingBinding;
 import com.example.mao.beautylife.util.ImageLoaderUtil;
 import com.example.mao.beautylife.util.ModeUtil;
 

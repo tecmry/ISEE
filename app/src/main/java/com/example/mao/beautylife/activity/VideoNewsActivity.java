@@ -3,7 +3,6 @@ package com.example.mao.beautylife.activity;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -12,6 +11,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.Transition;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -43,7 +43,7 @@ import static com.tencent.plus.DensityUtil.dip2px;
 
 public class VideoNewsActivity extends AppCompatActivity implements View.OnClickListener
 {
-
+    private final static String Tags = "VideoNewsActivity";
     private final static String IMG_TRANSITION = "IMG_TRANSITION";
     private final static String TRANSITION = "TRANSITION";
     private TextView videoTitle;
@@ -70,15 +70,17 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
     private OrientationUtils orientationUtils;
 
     private List<Fragment> fragmentsList;
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_news);
         isTransition = getIntent().getBooleanExtra(TRANSITION, false);
         fragmentsList = new ArrayList<Fragment>();
+        Log.d(Tags,  "VideoNewsActivity is Create");
         init();
-
     }
+
     private void init()
     {
         videoTitle = findViewById(R.id.TV_videotitle);
@@ -113,8 +115,8 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
         });
         mTabLayout.setupWithViewPager(mViewPager);
 
-      newsData = (NetArticleItemData.VideosBean)getIntent().getSerializableExtra("newsData");
-
+        newsData = (NetArticleItemData.VideosBean)getIntent().getSerializableExtra("newsData");
+        System.out.println("aaaaa" + newsData);
         if (newsData!=null)
         {
             videoTitle.setText(newsData.getTitle());
@@ -136,31 +138,32 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
             }
             list.add(new SwitchVideoModel("标清",newsData.getVideourl()));
 
+            sampleVideo.setUp(list, true, newsData.getTitle());
+            sampleVideo.getTitleTextView().setVisibility(View.VISIBLE);
+            orientationUtils = new OrientationUtils(this, sampleVideo);
+            sampleVideo.setIsTouchWiget(true);
+
+            sampleVideo.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    orientationUtils.resolveByClick();
+                }
+            });
+
+            sampleVideo.getBackButton().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
+                }
+            });
+            reflex(mTabLayout);
+            initTransition();
         }else {
             Toast.makeText(this,"数据传输错误()",Toast.LENGTH_SHORT).show();
         }
         focusUser.setOnClickListener(this);
 
-        sampleVideo.setUp(list, true, newsData.getTitle());
-        sampleVideo.getTitleTextView().setVisibility(View.VISIBLE);
-        orientationUtils = new OrientationUtils(this, sampleVideo);
-        sampleVideo.setIsTouchWiget(true);
 
-       sampleVideo.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                orientationUtils.resolveByClick();
-            }
-        });
-
-       sampleVideo.getBackButton().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
-       reflex(mTabLayout);
-        initTransition();
     }
     @Override
     public void onClick(View view) {
@@ -220,49 +223,46 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
     }
     public static void reflex(final TabLayout tabLayout){
         //了解源码得知 线的宽度是根据 tabView的宽度来设置的
-        tabLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    //拿到tabLayout的mTabStrip属性
-                    LinearLayout mTabStrip = (LinearLayout) tabLayout.getChildAt(0);
+        tabLayout.post(() -> {
+            try {
+                //拿到tabLayout的mTabStrip属性
+                LinearLayout mTabStrip = (LinearLayout) tabLayout.getChildAt(0);
 
-                    int dp10 = dip2px(tabLayout.getContext(), 10);
+                int dp10 = dip2px(tabLayout.getContext(), 10);
 
-                    for (int i = 0; i < mTabStrip.getChildCount(); i++) {
-                        View tabView = mTabStrip.getChildAt(i);
+                for (int i = 0; i < mTabStrip.getChildCount(); i++) {
+                    View tabView = mTabStrip.getChildAt(i);
 
-                        //拿到tabView的mTextView属性  tab的字数不固定一定用反射取mTextView
-                        Field mTextViewField = tabView.getClass().getDeclaredField("mTextView");
-                        mTextViewField.setAccessible(true);
+                    //拿到tabView的mTextView属性  tab的字数不固定一定用反射取mTextView
+                    Field mTextViewField = tabView.getClass().getDeclaredField("mTextView");
+                    mTextViewField.setAccessible(true);
 
-                        TextView mTextView = (TextView) mTextViewField.get(tabView);
+                    TextView mTextView = (TextView) mTextViewField.get(tabView);
 
-                        tabView.setPadding(0, 0, 0, 0);
+                    tabView.setPadding(0, 0, 0, 0);
 
-                        //因为我想要的效果是   字多宽线就多宽，所以测量mTextView的宽度
-                        int width = 0;
-                        width = mTextView.getWidth();
-                        if (width == 0) {
-                            mTextView.measure(0, 0);
-                            width = mTextView.getMeasuredWidth();
-                        }
-
-                        //设置tab左右间距为10dp  注意这里不能使用Padding 因为源码中线的宽度是根据 tabView的宽度来设置的
-                        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tabView.getLayoutParams();
-                        params.width = width ;
-                        params.leftMargin = dp10;
-                        params.rightMargin = dp10;
-                        tabView.setLayoutParams(params);
-
-                        tabView.invalidate();
+                    //因为我想要的效果是   字多宽线就多宽，所以测量mTextView的宽度
+                    int width = 0;
+                    width = mTextView.getWidth();
+                    if (width == 0) {
+                        mTextView.measure(0, 0);
+                        width = mTextView.getMeasuredWidth();
                     }
 
-                } catch (NoSuchFieldException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
+                    //设置tab左右间距为10dp  注意这里不能使用Padding 因为源码中线的宽度是根据 tabView的宽度来设置的
+                    LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) tabView.getLayoutParams();
+                    params.width = width ;
+                    params.leftMargin = dp10;
+                    params.rightMargin = dp10;
+                    tabView.setLayoutParams(params);
+
+                    tabView.invalidate();
                 }
+
+            } catch (NoSuchFieldException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
             }
         });
 

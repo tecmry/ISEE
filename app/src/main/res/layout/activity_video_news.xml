@@ -139,42 +139,45 @@
             android:layout_height="21dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/btn_bg_shape"
-            android:layout_marginRight="20dp"
+
+            android:layout_marginEnd="20dp"
             android:padding="2dp"
             android:text="+关注"
             android:id="@+id/Bt_focusUser"
             android:textSize="10sp" />
     </RelativeLayout>
-    <android.support.design.widget.TabLayout
-        android:layout_width="match_parent"
-        app:tabSelectedTextColor="#FEE296"
-        app:tabTextColor="@color/textColor_Black"
-        app:tabIndicatorColor="#FEE296"
-        android:layout_below="@+id/RL_usercontent"
-        android:id="@+id/TL_One"
-        android:layout_height="wrap_content">
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
+
+        <android.support.design.widget.TabLayout
+            android:layout_width="match_parent"
+            app:tabSelectedTextColor="#FEE296"
+            app:tabTextColor="@color/textColor_Black"
+            app:tabIndicatorColor="#FEE296"
+            android:layout_below="@+id/RL_usercontent"
+            android:id="@+id/TL_One"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="涉及产品"
+                android:id = "@+id/TabItem_one"
+                />
+            <android.support.design.widget.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="推荐视频"
+                android:id="@+id/TabItem_two"
+                />
+
+        </android.support.design.widget.TabLayout>
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="涉及产品"
-            android:id = "@+id/TabItem_one"
-            />
-        <android.support.design.widget.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="推荐视频"
-            android:id="@+id/TabItem_two"
+            android:layout_below="@+id/TL_One"
+            android:layout_above="@+id/TL_Two"
+            android:id="@+id/VP_One"
             />
 
-    </android.support.design.widget.TabLayout>
-<android.support.v4.view.ViewPager
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/TL_One"
-    android:layout_above="@+id/TL_Two"
-    android:id="@+id/VP_One"
-    />
+
 
     <android.support.design.widget.TabLayout
         android:id="@+id/TL_Two"

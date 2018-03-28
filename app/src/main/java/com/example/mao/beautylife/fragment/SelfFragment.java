@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -17,7 +16,7 @@ import android.widget.TextView;
 
 import com.avos.avoscloud.AVUser;
 import com.example.mao.beautylife.R;
-import com.example.mao.beautylife.activity.EditActivity;
+import com.example.mao.beautylife.activity.VideoNewsActivity;
 import com.example.mao.beautylife.adapter.PageAdapter;
 import com.example.mao.beautylife.base.BaseFragment;
 import com.example.mao.beautylife.databinding.FragmentSelfBinding;
@@ -57,7 +56,7 @@ public class SelfFragment extends BaseFragment {
         reflex(binding.fragmentSelfTab);
 
         binding.selfUserImage.setOnClickListener(v -> {
-            startActivity(new Intent(getContext(), EditActivity.class));
+            startActivity(new Intent(getContext(), VideoNewsActivity.class));
         });
 
         return binding.getRoot();
