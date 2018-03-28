@@ -64,6 +64,7 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
 
     private SampleVideo sampleVideo;
     private List<SwitchVideoModel> list = new ArrayList<>();
+    private List<String> TitleList = new ArrayList<>();
 
     private Transition transition;
     private boolean isTransition;
@@ -78,6 +79,8 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
         isTransition = getIntent().getBooleanExtra(TRANSITION, false);
         fragmentsList = new ArrayList<Fragment>();
         Log.d(Tags,  "VideoNewsActivity is Create");
+        TitleList.add("涉及产品");
+        TitleList.add("推荐视频");
         init();
     }
 
@@ -112,6 +115,12 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
             public int getCount() {
                 return fragmentsList.size();
             }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+               return TitleList.get(position);
+            }
         });
         mTabLayout.setupWithViewPager(mViewPager);
 
@@ -143,19 +152,9 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
             orientationUtils = new OrientationUtils(this, sampleVideo);
             sampleVideo.setIsTouchWiget(true);
 
-            sampleVideo.getFullscreenButton().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    orientationUtils.resolveByClick();
-                }
-            });
+            sampleVideo.getFullscreenButton().setOnClickListener(v -> orientationUtils.resolveByClick());
 
-            sampleVideo.getBackButton().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
+            sampleVideo.getBackButton().setOnClickListener(v -> onBackPressed());
             reflex(mTabLayout);
             initTransition();
         }else {
