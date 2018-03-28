@@ -63,7 +63,7 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
                 Glide.with(mContext).load(dataList.get(3).getCoverUrl()).into(holder.Iv_Right);
                 holder.Tv_LeftAuthor.setText(dataList.get(2).getNickname());
                 holder.Tv_RightAuthor.setText(dataList.get(3).getNickname());
-                holder.LL_RightItem.setOnClickListener(view -> {
+                holder.LL_LeftItem.setOnClickListener(view -> {
                     Intent intent = new Intent();
                     intent.setClass(mContext, VideoNewsActivity.class);
                     Bundle bundle = new Bundle();
@@ -87,7 +87,7 @@ public class RecomandVideoRecyclerAdapter extends RecyclerView.Adapter<RecomandV
             Glide.with(mContext).load(dataList.get(1).getCoverUrl()).into(holder.Iv_Right);
             holder.Tv_LeftAuthor.setText(dataList.get(0).getNickname());
             holder.Tv_RightAuthor.setText(dataList.get(1).getNickname());
-            holder.LL_RightItem.setOnClickListener(view -> {
+            holder.LL_LeftItem.setOnClickListener(view -> {
                 Intent intent = new Intent();
                 intent.setClass(mContext, VideoNewsActivity.class);
                 Bundle bundle = new Bundle();
