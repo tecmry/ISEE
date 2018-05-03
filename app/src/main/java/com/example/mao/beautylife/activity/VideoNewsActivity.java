@@ -62,8 +62,6 @@ public class VideoNewsActivity extends AppCompatActivity implements View.OnClick
 
     private NetArticleItemData.VideosBean newsData;
 
-
-
     private SampleVideo sampleVideo;
     private List<SwitchVideoModel> list = new ArrayList<>();
     private List<String> TitleList = new ArrayList<>();
